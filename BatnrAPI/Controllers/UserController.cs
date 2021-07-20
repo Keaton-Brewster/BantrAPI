@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using BantrAPI.Models;
 using BantrAPI.Services;
 
-namespace Bantr.Controllers
+namespace BantrAPI.Controllers
 {
 
     [Route("api/users")]
@@ -15,7 +15,7 @@ namespace Bantr.Controllers
         private readonly UserService _userService;
         public UserController(UserService userService)
         {
-            _userService= userService;
+            _userService = userService;
         }
 
         [HttpGet]

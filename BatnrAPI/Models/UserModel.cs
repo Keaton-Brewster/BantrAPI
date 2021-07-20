@@ -4,23 +4,33 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BantrAPI.Models
 {
-    public class User : IdentityUser
+    [BsonIgnoreExtraElements]
+    public class User
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string _id { get; set; }
-
-        [BsonElement("email")]
-        public string email { get; set; }
-
-        [BsonElement("phone")]
-        public int phone { get; set; }
+        public string Id { get; set; }
 
         [BsonElement("name")]
-        public string name { get; set; }
+        public string Name { get; set; }
+
+        [BsonElement("email")]
+        public string Email { get; set; }
 
         [BsonElement("password")]
-        public string password { get; set; }
+        public string Password { get; set; }
+
+        [BsonElement("phone")]
+        public string Phone { get; set; }
+
+        [BsonElement("date")]
+        public BsonDateTime Date { get; set; }
+
+        [BsonElement("picture")]
+        public string ProfilePicture { get; set; }
+
+        [BsonElement("contacts")]
+        public object[] Contacts { get; set; }
 
     }
 }

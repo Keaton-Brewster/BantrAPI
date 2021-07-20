@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BantrAPI.Models
 {
+    [BsonIgnoreExtraElements]
     public class Conversation
     {
         [BsonId]

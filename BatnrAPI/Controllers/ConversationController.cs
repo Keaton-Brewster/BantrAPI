@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using BantrAPI.Models;
 using BantrAPI.Services;
+using MongoDB.Bson;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,12 +21,13 @@ namespace BantrAPI.Controllers
         // GET: api/values
         [HttpGet]
         public ActionResult<List<Conversation>> Get() =>
-            _conversationService.Get();
+            _conversationService.GetAll();
         // Need to test this and see if this actually does what I need for it to do.
 
         // GET api/values/5
         [HttpGet("{id}")]
-        // Need to add return function here
+        public ActionResult<List<Conversation>> Get(string id) =>
+            _conversationService.Get(id);
 
         // POST api/values
         [HttpPost]

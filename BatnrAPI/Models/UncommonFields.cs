@@ -18,23 +18,10 @@ namespace BantrAPI.Models.UncommonFields
         public string SenderName { get; set; }
     }
 
-    // public interface IMessages
-    // {
-    //     string sender_id { get; set; }
-    //     string Content { get; set; }
-    //     string SenderName { get; set; }
-    // }
-
     public class Members
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string member_id { get; set; }
     }
-
-
-    // public interface IMembers
-    // {
-    //     string member_id { get; set; }
-    // }
 }

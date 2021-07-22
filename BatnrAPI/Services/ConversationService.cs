@@ -28,7 +28,7 @@ namespace BantrAPI.Services
         public List<Conversation> Get() =>
             _conversations.Find(conversation => true).ToList();
 
-        public ActionResult<List<Conversation>> Get(string id) =>
+        public List<Conversation> Get(string id) =>
             _conversations.Find(x => x.members.Contains(id)).ToList();
 
         public Conversation Create(Conversation conversation)

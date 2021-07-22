@@ -1,11 +1,8 @@
 ﻿using BantrAPI.Models;
-using BantrAPI.Models.UncommonFields;
 using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace BantrAPI.Services
 {
@@ -28,7 +25,7 @@ namespace BantrAPI.Services
             DB = client.GetDatabase(settings.DatabaseName);
         }
 
-        public List<Conversation> GetAll() =>
+        public List<Conversation> Get() =>
             _conversations.Find(conversation => true).ToList();
 
         public ActionResult<List<Conversation>> Get(string id) =>

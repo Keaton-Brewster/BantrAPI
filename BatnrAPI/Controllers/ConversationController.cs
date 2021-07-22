@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using BantrAPI.Models;
 using BantrAPI.Services;
-using MongoDB.Bson;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BantrAPI.Controllers
 {
@@ -18,31 +15,25 @@ namespace BantrAPI.Controllers
             _conversationService = conversationService;
         }
 
-        // GET: api/values
         [HttpGet]
         public ActionResult<List<Conversation>> Get() =>
-            _conversationService.GetAll();
-        // Need to test this and see if this actually does what I need for it to do.
+            _conversationService.Get();
 
-        // GET api/values/5
+        // Route for getting the list of conversations a user is a member of
         [HttpGet("{id}")]
-        // public ActionResult<List<Conversation>> Get(string id) =>
         public ActionResult<List<Conversation>> Get(string id) =>
             _conversationService.Get(id);
 
-        // POST api/values
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

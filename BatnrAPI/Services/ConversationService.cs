@@ -12,6 +12,7 @@ namespace BantrAPI.Services
     public class ConversationService
     {
         private readonly IMongoCollection<Conversation> _conversations;
+        private IMongoDatabase DB;
 
         public ConversationService(IBantrDatabaseSettings settings)
         {
@@ -21,38 +22,17 @@ namespace BantrAPI.Services
             _conversations = database.GetCollection<Conversation>(settings.ConversationCollectionName);
         }
 
+        private void dbAccess(IBantrDatabaseSettings settings)
+        {
+            var client = new MongoClient(settings.ConnectionString);
+            DB = client.GetDatabase(settings.DatabaseName);
+        }
+
         public List<Conversation> GetAll() =>
             _conversations.Find(conversation => true).ToList();
 
-        public bool CheckForMember(Conversation conversation, string id)
-        {
-            Convert.ChangeType(id, typeof(BsonObjectId));
-            foreach (var member in conversation.members)
-            {
-                if (member == id)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        public List<Conversation> Get(string id)
-        // This is not working. Definitely going to need to do a lot more research on how to set up
-        // propery controllers for c# 
-        {
-            // var filter = Builders<Conversation>.Filter.ElemMatch(x => x.members,
-            //     Builders<Members>.Filter.AnyEq(x => x.member_id == id)
-            //     );
-            Convert.ChangeType(id, typeof(BsonObjectId));
-            var filter = Builders<Conversation>.Filter.AnyIn(x => x.members, id);
-
-
-            // var convos = _conversations.Find(conversation => CheckForMember(conversation, id)).ToList();
-            var convos = _conversations.Find(filter).ToList();
-            return convos;
-            // return _conversations.Find(filter).ToList();
-
-        }
+        public ActionResult<List<Conversation>> Get(string id) =>
+            _conversations.Find(x => x.members.Contains(id)).ToList();
 
         public Conversation Create(Conversation conversation)
         {

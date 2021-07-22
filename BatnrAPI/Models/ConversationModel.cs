@@ -18,10 +18,10 @@ namespace BantrAPI.Models
         public string name { get; set; }
 
         [BsonElement("members")]
-        public BsonObjectId[] members { get; set; }
+        public List<string> members { get; set; }
 
         [BsonElement("messages")]
-        public object[] messages { get; set; }
+        public List<object> messages { get; set; }
 
         [BsonElement("updated_at")]
         public DateTime updated_at { get; set; }

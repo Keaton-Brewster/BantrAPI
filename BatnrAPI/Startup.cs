@@ -14,7 +14,7 @@ using Microsoft.Extensions.Options;
 using BantrAPI.Models;
 using BantrAPI.Services;
 
-namespace BatnrAPI
+namespace BantrAPI
 {
     public class Startup
     {

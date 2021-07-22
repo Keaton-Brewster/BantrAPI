@@ -10,7 +10,7 @@ namespace BantrAPI.Controllers
 {
     [ApiController]
     [Route("api/conversations")]
-    public class ConversationController : Controller
+    public class ConversationController : ControllerBase
     {
         private readonly ConversationService _conversationService;
         public ConversationController(ConversationService conversationService)
@@ -26,6 +26,7 @@ namespace BantrAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        // public ActionResult<List<Conversation>> Get(string id) =>
         public ActionResult<List<Conversation>> Get(string id) =>
             _conversationService.Get(id);
 

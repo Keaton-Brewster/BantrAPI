@@ -36,31 +36,9 @@ namespace BantrAPI.Services
             List<string> ids = thisConversation.members;
             List<User> theseUsers = _users.Find(user => ids.Contains(user._id)).ToList();
             theseUsers.ForEach(user => user.Password = null);
-
+            // Had to create a custom class to return the modified conversation information
             TempConversation resultConvo = new TempConversation(thisConversation, theseUsers);
             return resultConvo;
-
-            /* Get Ids of Members in the conversation, call the db and get their information
-                Then programatically fill in their:
-                     ID
-                     Email
-                     Phone
-                     Picture
-                     Name
-                Then reconstruct the Conversation<> and send it back in the response
-                
-                I am probably going to have to create a new static type
-                for the conversation so that I can send it back with the 
-                new types of member information
-                (Converting from <string> to <object>)
-
-
-                UPDATE
-                At the point now where I have the conversation information, 
-                And the information of the users in the conversation
-                Now I have to figure out how to create a new conversation with  
-                with some sort of constructor I am assuming.
-            */
         }
 
         public Conversation Create(Conversation conversation)

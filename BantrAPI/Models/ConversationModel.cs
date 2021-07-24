@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using BantrAPI.Models.ConversationSubfields;
 
 namespace BantrAPI.Models
 {
@@ -20,7 +21,7 @@ namespace BantrAPI.Models
         public List<string> members { get; set; }
 
         [BsonElement("messages")]
-        public List<object> messages { get; set; }
+        public List<Message> messages { get; set; }
 
         [BsonElement("updated_at")]
         public DateTime updated_at { get; set; }

@@ -2,13 +2,11 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using BantrAPI.Models.ConversationSubfields;
 
 namespace BantrAPI.Models
 {
     [BsonIgnoreExtraElements]
-
-    //! I have no idea if this is going to work the way I want it to
-    //! I need to figure out how to create a different, but similar
     public class TempConversation
     {
         public TempConversation(
@@ -34,7 +32,7 @@ namespace BantrAPI.Models
         public List<User> members { get; set; }
 
         [BsonElement("messages")]
-        public List<object> messages { get; set; }
+        public List<Message> messages { get; set; }
 
         [BsonElement("updated_at")]
         public DateTime updated_at { get; set; }

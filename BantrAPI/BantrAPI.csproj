@@ -10,6 +10,7 @@
     <None Remove="MongoDB.Driver" />
     <None Remove="Models\" />
     <None Remove="Controllers\" />
+    <None Remove="Microsoft.AspNet.WebApi.Cors" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -18,5 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.13.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.7" />
   </ItemGroup>
 </Project>

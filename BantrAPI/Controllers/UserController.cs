@@ -7,7 +7,7 @@ namespace BantrAPI.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    public class UserController : ControllerBase
+    public class UserController
     {
         private readonly UserService _userService;
         public UserController(UserService userService)

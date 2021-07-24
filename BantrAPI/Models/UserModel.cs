@@ -26,7 +26,7 @@ namespace BantrAPI.Models
         public BsonDateTime Date { get; set; }
 
         [BsonElement("picture")]
-        public string ProfilePicture { get; set; }
+        public string Picture { get; set; }
 
         [BsonElement("contacts")]
         public object[] Contacts { get; set; }

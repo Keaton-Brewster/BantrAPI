@@ -32,6 +32,7 @@ namespace BantrAPI.Services
         public TempConversation GetConversationInformation(string convoId)
         {
             Conversation thisConversation = _conversations.Find(conversation => conversation._id == convoId).First();
+            thisConversation.messages = null;
             List<string> ids = thisConversation.members;
             List<User> theseUsers = _users.Find(user => ids.Contains(user._id)).ToList();
             theseUsers.ForEach(user => user.Password = null);

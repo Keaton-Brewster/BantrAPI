@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using BantrAPI.Models.ConversationSubfields;
+using BantrAPI.Models.Subfields;
 
 namespace BantrAPI.Models
 {

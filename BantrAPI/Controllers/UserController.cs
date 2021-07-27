@@ -20,8 +20,8 @@ namespace BantrAPI.Controllers
         public List<User> Get() =>
             _userService.Get();
 
-        [HttpGet("login/{key}")]
-        public User Login(string key) =>
+        [HttpPost("login")]
+        public User Login([FromBody] TKey key) =>
             _userService.Login(key);
 
         [HttpPost("signup")]

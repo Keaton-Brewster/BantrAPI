@@ -2,9 +2,7 @@
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using System.Text;
-using MongoDB.Bson;
+using BantrAPI.Types;
 
 namespace BantrAPI.Services
 {
@@ -37,8 +35,8 @@ namespace BantrAPI.Services
             return user;
         }
 
-        public User Login(string key) =>
-            _users.Find(user => user.Key == key).FirstOrDefault();
+        public User Login(TKey key) =>
+            _users.Find(user => user.GID == key.z && user.Email == key.y).FirstOrDefault();
 
         public void Update(string id, User userIn) =>
             _users.ReplaceOne(user => user._id == id, userIn);

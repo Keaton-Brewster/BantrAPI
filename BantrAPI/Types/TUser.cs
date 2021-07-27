@@ -6,6 +6,6 @@ namespace BantrAPI.Types
         public string familyName { get; set; }
         public string imageUrl { get; set; }
         public string email { get; set; }
-        public string key { get; set; }
+        public string g_id { get; set; }
     }
 }

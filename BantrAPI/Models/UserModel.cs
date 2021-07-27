@@ -14,15 +14,15 @@ namespace BantrAPI.Models
             this.FamilyName = user.familyName;
             this.Email = user.email;
             this.imageUrl = user.imageUrl;
-            this.Key = user.key;
+            this.GID = user.g_id;
         }
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
 
-        [BsonElement("key")]
-        public string Key { get; set; }
+        [BsonElement("g_id")]
+        public string GID { get; set; }
 
         [BsonElement("givenName")]
         public string GivenName { get; set; }

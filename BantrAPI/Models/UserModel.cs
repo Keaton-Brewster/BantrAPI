@@ -33,6 +33,9 @@ namespace BantrAPI.Models
         [BsonElement("email")]
         public string Email { get; set; }
 
+        [BsonElement("phoneNum")]
+        public string PhoneNum { get; set; }
+
         [BsonElement("createdAt")]
         public BsonDateTime Date { get; set; }
 

@@ -10,11 +10,11 @@ namespace BantrAPI.Models
     {
         public User(TUser user)
         {
-            this.GivenName = user.givenName;
-            this.FamilyName = user.familyName;
-            this.Email = user.email;
+            this.givenName = user.givenName;
+            this.familyName = user.familyName;
+            this.email = user.email;
             this.imageUrl = user.imageUrl;
-            this.GID = user.g_id;
+            this.g_id = user.g_id;
         }
 
         [BsonId]
@@ -22,28 +22,28 @@ namespace BantrAPI.Models
         public string _id { get; set; }
 
         [BsonElement("g_id")]
-        public string GID { get; set; }
+        public string g_id { get; set; }
 
         [BsonElement("givenName")]
-        public string GivenName { get; set; }
+        public string givenName { get; set; }
 
         [BsonElement("familyName")]
-        public string FamilyName { get; set; }
+        public string familyName { get; set; }
 
         [BsonElement("email")]
-        public string Email { get; set; }
+        public string email { get; set; }
 
         [BsonElement("phoneNum")]
-        public string PhoneNum { get; set; }
+        public string phoneNum { get; set; }
 
         [BsonElement("createdAt")]
-        public BsonDateTime Date { get; set; }
+        public BsonDateTime createdAt { get; set; }
 
         [BsonElement("imageUrl")]
         public string imageUrl { get; set; }
 
         [BsonElement("contacts")]
-        public object[] Contacts { get; set; }
+        public object[] contacts { get; set; }
 
     }
 }

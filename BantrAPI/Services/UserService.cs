@@ -36,7 +36,7 @@ namespace BantrAPI.Services
         }
 
         public User Login(TKey key) =>
-            _users.Find(user => user.GID == key.z && user.Email == key.y).FirstOrDefault();
+            _users.Find(user => user.g_id == key.z && user.email == key.y).FirstOrDefault();
 
         public void Update(string id, User userIn) =>
             _users.ReplaceOne(user => user._id == id, userIn);

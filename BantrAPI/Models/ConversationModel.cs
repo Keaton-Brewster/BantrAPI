@@ -17,6 +17,7 @@ namespace BantrAPI.Models
         [BsonElement("name")]
         public string name { get; set; }
 
+        [BsonRepresentation(BsonType.ObjectId)]
         [BsonElement("members")]
         public List<string> members { get; set; }
 

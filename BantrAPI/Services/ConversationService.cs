@@ -35,7 +35,7 @@ namespace BantrAPI.Services
             thisConversation.messages = null;
             List<string> ids = thisConversation.members;
             List<User> theseUsers = _users.Find(user => ids.Contains(user._id)).ToList();
-            theseUsers.ForEach(user => user.Password = null);
+            // theseUsers.ForEach(user => user.Password = null);
             // Had to create a custom class to return the modified conversation information
             TempConversation resultConvo = new TempConversation(thisConversation, theseUsers);
             return resultConvo;

@@ -20,6 +20,7 @@ namespace BantrAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseSetting("http_port", "5001");
                     webBuilder.UseStartup<Startup>();
                 });
     }

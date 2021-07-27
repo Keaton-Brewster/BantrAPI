@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BantrAPI.Models;
 using BantrAPI.Services;
+using BantrAPI.Types;
 
 namespace BantrAPI.Controllers
 {
@@ -18,5 +19,18 @@ namespace BantrAPI.Controllers
         [HttpGet]
         public List<User> Get() =>
             _userService.Get();
+
+        [HttpGet("login/{key}")]
+        public User Login(string key) =>
+            _userService.Login(key);
+
+        [HttpPost("signup")]
+        public User SignUp([FromBody] TUser user)
+        {
+            User thisUser = new User(user);
+            return _userService.Create(thisUser);
+
+        }
+
     }
 }

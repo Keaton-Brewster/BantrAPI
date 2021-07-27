@@ -1,7 +1,7 @@
-﻿using System;
-using BantrAPI.Models;
+﻿using BantrAPI.Models;
+using BantrAPI.Types;
+using BantrAPI.Models.Subfields;
 using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -45,6 +45,22 @@ namespace BantrAPI.Services
         {
             _conversations.InsertOne(conversation);
             return conversation;
+        }
+
+        public Conversation PutNewMessage(TNewMessage newMessageObject)
+        {
+            Message message = newMessageObject.message;
+            string convo_id = newMessageObject.conversation_id;
+
+            var filter = Builders<Conversation>
+             .Filter.Eq(convo => convo._id, convo_id);
+
+            var update = Builders<Conversation>.Update
+                    .Push<Message>(convo => convo.messages, message);
+
+            _conversations.FindOneAndUpdate(filter, update);
+            Conversation result = _conversations.Find(convo => convo._id == convo_id).FirstOrDefault();
+            return result;
         }
 
         public void Update(string id, Conversation conversationIn) =>

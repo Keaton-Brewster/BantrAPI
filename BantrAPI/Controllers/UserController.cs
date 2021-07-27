@@ -29,7 +29,6 @@ namespace BantrAPI.Controllers
         {
             User thisUser = new User(user);
             return _userService.Create(thisUser);
-
         }
 
     }

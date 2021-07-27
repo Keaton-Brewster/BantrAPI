@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore;
 using BantrAPI.Models;
 using BantrAPI.Services;
-using System.Text.Json;
+using BantrAPI.Types;
 
 namespace BantrAPI.Controllers
 {
@@ -30,10 +29,9 @@ namespace BantrAPI.Controllers
         public ActionResult<TempConversation> GetConversationInformation(string convoId) =>
             _conversationService.GetConversationInformation(convoId);
 
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        [HttpPut("newMessage")]
+        public Conversation Put([FromBody] TNewMessage newMessageObject) =>
+            _conversationService.PutNewMessage(newMessageObject);
 
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)

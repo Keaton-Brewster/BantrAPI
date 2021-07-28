@@ -25,10 +25,10 @@ namespace BantrAPI.Controllers
             _userService.Login(key);
 
         [HttpPost("signup")]
-        public User SignUp([FromBody] TUser user)
+        public User SignUp([FromBody] TUser userInfo)
         {
-            User thisUser = new User(user);
-            return _userService.Create(thisUser);
+            User newUser = new User(userInfo);
+            return _userService.Create(newUser);
         }
 
     }

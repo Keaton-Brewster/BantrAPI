@@ -15,6 +15,8 @@ namespace BantrAPI.Models
             this.email = user.email;
             this.imageUrl = user.imageUrl;
             this.g_id = user.g_id;
+            this.phoneNum = user.phoneNum;
+            this.createdAt = DateTime.Now;
         }
 
         [BsonId]
@@ -37,7 +39,7 @@ namespace BantrAPI.Models
         public string phoneNum { get; set; }
 
         [BsonElement("createdAt")]
-        public BsonDateTime createdAt { get; set; }
+        public DateTime createdAt { get; set; }
 
         [BsonElement("imageUrl")]
         public string imageUrl { get; set; }

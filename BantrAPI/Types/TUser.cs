@@ -7,5 +7,6 @@ namespace BantrAPI.Types
         public string imageUrl { get; set; }
         public string email { get; set; }
         public string g_id { get; set; }
+        public string phoneNum { get; set; }
     }
 }

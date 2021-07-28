@@ -1,5 +1,6 @@
 ﻿using BantrAPI.Models;
 using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Serializers;
 using System.Collections.Generic;
 using System.Linq;
 using BantrAPI.Types;
@@ -18,9 +19,15 @@ namespace BantrAPI.Services
             _users = database.GetCollection<User>(settings.UserCollectionName);
             //? Was trying to figure out a way to keep user objects unique by email
             //? But that has turned into a struggle for some reason
+
+            // var userBuilder = Builders<User>.IndexKeys;
+            // var indexModel = new CreateIndexModel<User>(userBuilder.Ascending(x => x.email));
+            // _users.Indexes
+            //           .CreateOneAsync(indexModel);
+
+            // _users.EnsureIndex(IndexKeys.Ascending(""), IndexOptions.SetUnique(true));
             // _users.Indexes.CreateOne(
             //     new CreateIndexModel<User>(Builders<User>.IndexKeys.Descending(model => model.Email),
-            //     new CreateIndexOptions { Unique = true }));
         }
 
         public List<User> Get() =>
@@ -31,6 +38,14 @@ namespace BantrAPI.Services
 
         public User Create(User user)
         {
+            // var options = new CreateIndexOptions() { Unique = true };
+            // var field = new StringFieldDefinition<User>("EmailAddress");
+            // var indexDefinition = new IndexKeysDefinitionBuilder<User>().Ascending(field);
+
+
+
+            // _users.Indexes.CreateOne(indexDefinition, options);
+
             _users.InsertOne(user);
             return user;
         }

@@ -31,7 +31,7 @@ namespace BantrAPI.Services
 
         public ConvoInfo GetConversationInformation(string convoId)
         {
-            Conversation thisConversation = _conversations.Find(conversation => conversation._id == convoId).First();
+            Conversation thisConversation = _conversations.Find(conversation => conversation._id == convoId).FirstOrDefault();
             thisConversation.messages = null;
             List<string> ids = thisConversation.members;
             List<User> theseUsers = _users.Find(user => ids.Contains(user._id)).ToList();
@@ -52,12 +52,11 @@ namespace BantrAPI.Services
             string convo_id = newMessageObject.conversation_id;
 
             var filter = Builders<Conversation>
-             .Filter.Eq(convo => convo._id, convo_id);
-
+                    .Filter.Eq(convo => convo._id, convo_id);
             var update = Builders<Conversation>.Update
                     .Push<Message>(convo => convo.messages, message);
-
             _conversations.FindOneAndUpdate(filter, update);
+
             Conversation result = _conversations.Find(convo => convo._id == convo_id).FirstOrDefault();
             return result;
         }

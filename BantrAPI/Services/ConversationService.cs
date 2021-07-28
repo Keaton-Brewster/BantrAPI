@@ -29,15 +29,14 @@ namespace BantrAPI.Services
             _conversations.Find(x => x.members.Contains(id)).ToList();
 
 
-        public TempConversation GetConversationInformation(string convoId)
+        public ConvoInfo GetConversationInformation(string convoId)
         {
             Conversation thisConversation = _conversations.Find(conversation => conversation._id == convoId).First();
             thisConversation.messages = null;
             List<string> ids = thisConversation.members;
             List<User> theseUsers = _users.Find(user => ids.Contains(user._id)).ToList();
-            // theseUsers.ForEach(user => user.Password = null);
             // Had to create a custom class to return the modified conversation information
-            TempConversation resultConvo = new TempConversation(thisConversation, theseUsers);
+            ConvoInfo resultConvo = new ConvoInfo(thisConversation, theseUsers);
             return resultConvo;
         }
 

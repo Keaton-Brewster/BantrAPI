@@ -7,9 +7,9 @@ using BantrAPI.Models.Subfields;
 namespace BantrAPI.Models
 {
     [BsonIgnoreExtraElements]
-    public class TempConversation
+    public class ConvoInfo
     {
-        public TempConversation(
+        public ConvoInfo(
             Conversation convoInfo,
             List<User> members
         )

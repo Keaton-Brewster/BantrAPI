@@ -26,7 +26,7 @@ namespace BantrAPI.Controllers
             _conversationService.Get(id);
 
         [HttpGet("getInfo/{convoId}")]
-        public ActionResult<TempConversation> GetConversationInformation(string convoId) =>
+        public ActionResult<ConvoInfo> GetConversationInformation(string convoId) =>
             _conversationService.GetConversationInformation(convoId);
 
         [HttpPut("newMessage")]

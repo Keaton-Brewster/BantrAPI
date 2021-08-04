@@ -9,7 +9,6 @@
     }
 
     public interface IBantrDatabaseSettings
-    // Finally figured out that methods or props that start I are because they are INTERFACED
     {
         string UserCollectionName { get; set; }
         string ConversationCollectionName { get; set; }

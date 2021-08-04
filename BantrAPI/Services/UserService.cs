@@ -38,20 +38,12 @@ namespace BantrAPI.Services
 
         public User Create(User user)
         {
-            // var options = new CreateIndexOptions() { Unique = true };
-            // var field = new StringFieldDefinition<User>("EmailAddress");
-            // var indexDefinition = new IndexKeysDefinitionBuilder<User>().Ascending(field);
-
-
-
-            // _users.Indexes.CreateOne(indexDefinition, options);
-
             _users.InsertOne(user);
             return user;
         }
 
         public User Login(TKey key) =>
-            _users.Find(user => user.g_id == key.z && user.email == key.y).FirstOrDefault();
+            _users.Find(user => user.email == key.y && user.g_id == key.z).FirstOrDefault();
 
         public void Update(string id, User userIn) =>
             _users.ReplaceOne(user => user._id == id, userIn);
